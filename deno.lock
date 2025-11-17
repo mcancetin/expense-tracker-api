@@ -1,8 +1,17 @@
 {
   "version": "5",
   "specifiers": {
-    "jsr:@std/assert@1": "1.0.15",
+    "jsr:@denosaurs/plug@^1.1.0": "1.1.0",
+    "jsr:@felix/bcrypt@^1.0.8": "1.0.8",
+    "jsr:@std/assert@1": "1.0.16",
+    "jsr:@std/encoding@1": "1.0.6",
+    "jsr:@std/fmt@1": "1.0.3",
+    "jsr:@std/fs@1": "1.0.19",
+    "jsr:@std/internal@^1.0.10": "1.0.12",
     "jsr:@std/internal@^1.0.12": "1.0.12",
+    "jsr:@std/internal@^1.0.9": "1.0.12",
+    "jsr:@std/path@1": "1.1.2",
+    "jsr:@std/path@^1.1.1": "1.1.2",
     "npm:@hono/zod-validator@~0.7.4": "0.7.4_hono@4.10.1_zod@4.1.12",
     "npm:@types/lodash@^4.17.20": "4.17.20",
     "npm:@types/pg@^8.15.5": "8.15.5",
@@ -11,19 +20,54 @@
     "npm:drizzle-orm@~0.44.6": "0.44.6_@types+pg@8.15.5_pg@8.16.3",
     "npm:drizzle-zod@~0.8.3": "0.8.3_drizzle-orm@0.44.6__@types+pg@8.15.5__pg@8.16.3_zod@4.1.12_@types+pg@8.15.5_pg@8.16.3",
     "npm:hono@^4.10.1": "4.10.1",
+    "npm:jose@^6.1.2": "6.1.2",
     "npm:lodash@^4.17.21": "4.17.21",
     "npm:pg@^8.16.3": "8.16.3",
     "npm:zod@^4.1.12": "4.1.12"
   },
   "jsr": {
-    "@std/assert@1.0.15": {
-      "integrity": "d64018e951dbdfab9777335ecdb000c0b4e3df036984083be219ce5941e4703b",
+    "@denosaurs/plug@1.1.0": {
+      "integrity": "eb2f0b7546c7bca2000d8b0282c54d50d91cf6d75cb26a80df25a6de8c4bc044",
       "dependencies": [
-        "jsr:@std/internal"
+        "jsr:@std/encoding",
+        "jsr:@std/fmt",
+        "jsr:@std/fs",
+        "jsr:@std/path@1"
+      ]
+    },
+    "@felix/bcrypt@1.0.8": {
+      "integrity": "59c41160fc027882479c512db5d53792c4d91aadcd49467c85caa2f1679046f2",
+      "dependencies": [
+        "jsr:@denosaurs/plug"
+      ]
+    },
+    "@std/assert@1.0.16": {
+      "integrity": "6a7272ed1eaa77defe76e5ff63ca705d9c495077e2d5fd0126d2b53fc5bd6532",
+      "dependencies": [
+        "jsr:@std/internal@^1.0.12"
+      ]
+    },
+    "@std/encoding@1.0.6": {
+      "integrity": "ca87122c196e8831737d9547acf001766618e78cd8c33920776c7f5885546069"
+    },
+    "@std/fmt@1.0.3": {
+      "integrity": "97765c16aa32245ff4e2204ecf7d8562496a3cb8592340a80e7e554e0bb9149f"
+    },
+    "@std/fs@1.0.19": {
+      "integrity": "051968c2b1eae4d2ea9f79a08a3845740ef6af10356aff43d3e2ef11ed09fb06",
+      "dependencies": [
+        "jsr:@std/internal@^1.0.9",
+        "jsr:@std/path@^1.1.1"
       ]
     },
     "@std/internal@1.0.12": {
       "integrity": "972a634fd5bc34b242024402972cd5143eac68d8dffaca5eaa4dba30ce17b027"
+    },
+    "@std/path@1.1.2": {
+      "integrity": "c0b13b97dfe06546d5e16bf3966b1cadf92e1cc83e56ba5476ad8b498d9e3038",
+      "dependencies": [
+        "jsr:@std/internal@^1.0.10"
+      ]
     }
   },
   "npm": {
@@ -425,6 +469,9 @@
     "hono@4.10.1": {
       "integrity": "sha512-rpGNOfacO4WEPClfkEt1yfl8cbu10uB1lNpiI33AKoiAHwOS8lV748JiLx4b5ozO/u4qLjIvfpFsPXdY5Qjkmg=="
     },
+    "jose@6.1.2": {
+      "integrity": "sha512-MpcPtHLE5EmztuFIqB0vzHAWJPpmN1E6L4oo+kze56LIs3MyXIj9ZHMDxqOvkP38gBR7K1v3jqd4WU2+nrfONQ=="
+    },
     "lodash@4.17.21": {
       "integrity": "sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg=="
     },
@@ -521,6 +568,7 @@
   },
   "workspace": {
     "dependencies": [
+      "jsr:@felix/bcrypt@^1.0.8",
       "jsr:@std/assert@1",
       "npm:@hono/zod-validator@~0.7.4",
       "npm:@types/lodash@^4.17.20",
@@ -529,6 +577,7 @@
       "npm:drizzle-orm@~0.44.6",
       "npm:drizzle-zod@~0.8.3",
       "npm:hono@^4.10.1",
+      "npm:jose@^6.1.2",
       "npm:lodash@^4.17.21",
       "npm:pg@^8.16.3",
       "npm:zod@^4.1.12"

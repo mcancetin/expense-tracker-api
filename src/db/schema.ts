@@ -3,8 +3,8 @@ import z from "zod";
 
 export const users = pgTable("users", {
   id: uuid().defaultRandom().primaryKey(),
-  email: varchar({ length: 255 }).unique(),
-  passwordHash: varchar("password_hash", { length: 255 }),
+  email: varchar({ length: 255 }).unique().notNull(),
+  passwordHash: varchar("password_hash", { length: 255 }).notNull(),
   createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
   updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow(),
 });
@@ -33,4 +33,21 @@ export const categories = pgTable("categories", {
 export const insertUserSchema = z.object({
   email: z.email(),
   password: z.string(),
+});
+
+export const getUserByEmailSchema = z.object({
+  email: z.email(),
+});
+
+export const loginSchema = z.object({
+  email: z.email(),
+  password: z.string(),
+});
+
+export const insertCategorySchema = z.object({
+  name: z.string(),
+});
+
+export const updateCategorySchema = z.object({
+  name: z.string(),
 });
