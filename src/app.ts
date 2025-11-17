@@ -7,7 +7,8 @@ import routes from "@/routes";
 const app = new Hono();
 
 app.use(logger());
-app.use("/expense/*", authMiddleware);
+app.use("/expense/*", authMiddleware());
+app.use("/category/*", authMiddleware());
 
 app.get("/", (c) => c.text("Hello, World!"));
 app.route("/", routes);
