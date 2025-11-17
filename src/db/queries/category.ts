@@ -1,0 +1,50 @@
+import db from "../index.ts";
+
+import { eq } from "drizzle-orm";
+import {
+  categories,
+  insertCategorySchema,
+  updateCategorySchema,
+} from "@/schema";
+
+export async function getCategories() {
+  const items = await db.select().from(categories);
+  return items;
+}
+
+export async function getCategoryById(id: string) {
+  const items = await db.select().from(categories).where(eq(categories.id, id));
+  return items[0] || null;
+}
+
+export async function createCategory(category: unknown) {
+  const validatedCategory = insertCategorySchema.parse(category);
+
+  const existing = await db.select().from(categories).where(
+    eq(categories.name, validatedCategory.name),
+  );
+  if (existing.length > 0) {
+    return { ...existing[0], alreadyExists: true };
+  }
+
+  const [item] = await db.insert(categories).values(validatedCategory)
+    .returning();
+  return item;
+}
+
+export async function updateCategory(id: string, category: unknown) {
+  const validatedCategory = updateCategorySchema.parse(category);
+
+  const [item] = await db.update(categories)
+    .set(validatedCategory)
+    .where(eq(categories.id, id))
+    .returning();
+
+  return item || null;
+}
+
+export async function deleteCategory(id: string) {
+  const [deleted] = await db.delete(categories).where(eq(categories.id, id))
+    .returning();
+  return deleted || null;
+}
