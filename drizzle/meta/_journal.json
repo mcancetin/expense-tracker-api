@@ -36,6 +36,13 @@
       "when": 1763409516631,
       "tag": "0004_wandering_krista_starr",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1763577449939,
+      "tag": "0005_light_molly_hayes",
+      "breakpoints": true
     }
   ]
 }

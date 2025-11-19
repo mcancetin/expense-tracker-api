@@ -11,7 +11,7 @@ export const users = pgTable("users", {
 
 export const expenses = pgTable("expenses", {
   id: uuid().defaultRandom().primaryKey(),
-  title: varchar({ length: 255 }),
+  title: varchar({ length: 255 }).notNull(),
   userId: uuid("user_id").notNull().references(() => users.id, {
     onDelete: "cascade",
   }),
@@ -50,4 +50,10 @@ export const insertCategorySchema = z.object({
 
 export const updateCategorySchema = z.object({
   name: z.string(),
+});
+
+export const insertExpenseSchema = z.object({
+  title: z.string(),
+  userId: z.uuid(),
+  categoryId: z.uuid(),
 });
