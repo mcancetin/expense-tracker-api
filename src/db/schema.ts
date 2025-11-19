@@ -57,3 +57,8 @@ export const insertExpenseSchema = z.object({
   userId: z.uuid(),
   categoryId: z.uuid(),
 });
+
+export const updateExpenseSchema = z.object({
+  title: z.string(),
+  categoryId: z.uuid(),
+});
